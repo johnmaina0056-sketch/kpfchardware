@@ -258,70 +258,6 @@
   padding: 10px;
   margin-top: 10px;
 }
-  .hero {
-  height: 88vh;
-  background: url("saved.jpg") center/cover no-repeat;
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-/* DARK OVERLAY */
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.2));
-}
-
-/* CONTENT ABOVE IMAGE */
-.hero-content {
-  position: relative;
-  z-index: 2;
-  color: white;
-  padding-left: 8%;
-}
-
-.hero-content h1 {
-  font-size: 60px;
-  margin-bottom: 10px;
-}
-
-.hero-content p {
-  font-size: 20px;
-  margin: 6px 0;
-}
-  .promo-large {
-  position: relative;
-  border-radius: 10px;
-  overflow: hidden;
-
-  /* BACKGROUND IMAGE */
-  background: url("background 4.jfif") center/cover no-repeat;
-  min-height: 300px;
-  display: flex;
-  align-items: center;
-}
-
-/* DARK OVERLAY */
-.promo-large::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
-}
-
-/* CONTENT ON TOP */
-.promo-large .content {
-  position: relative;
-  z-index: 2;
-  color: white;
-  padding-left: 30px;
-}
-
-.promo-large h2 {
-  font-size: 30px;
-}
 </style>
 </head>
 
@@ -352,18 +288,18 @@
     </div>
   </div>
 
- <div class="hero">
-  <div class="hero-content">
-    <h1>Season Sale</h1>
-    <p>Hardware & Plumbing</p>
-    <p>Min. 35–70% Off</p>
-
-    <div class="buttons">
-      <a href="#" class="btn btn-primary"><i class="bx bx-cart"></i> SHOP NOW</a>
-      <a href="#" class="btn btn-secondary"><i class="bx bx-book"></i> READ MORE</a>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-content">
+      <h1>Season Sale</h1>
+      <p>Hardware & Plumbing</p>
+      <p>Min. 35–70% Off</p>
+      <div class="buttons">
+        <a href="#" class="btn btn-primary"><i class="bx bx-cart"></i> SHOP NOW</a>
+        <a href="#" class="btn btn-secondary"><i class="bx bx-book"></i> READ MORE</a>
+      </div>
     </div>
   </div>
-</div>
 
   <!-- FEATURES -->
   <div class="features">
@@ -373,15 +309,15 @@
     <div class="feature"><i class="bx bx-headphone"></i><h4>Online Support</h4><p>24/7 Dedicated Support</p></div>
   </div>
 
- <div class="promos">
-  <div class="promo-large">
-    <div class="content">
-      <h2>New Arrivals</h2>
-      <p>Building Materials Up to 70% Off</p><br />
-      <a href="#" class="btn btn-primary">Shop Now</a>
+  <!-- PROMOS -->
+  <div class="promos">
+    <div class="promo-large">
+      <div class="content">
+        <h2>New Arrivals</h2>
+        <p>Building Materials Up to 70% Off</p><br />
+        <a href="#" class="btn btn-primary">Shop Now</a>
+      </div>
     </div>
-  </div>
-</div>
     <div class="promo-small">
       <img src="background 3.jfif" alt="Pipes & Fittings" />
       <h3>Pipes & Fittings</h3>
@@ -389,7 +325,7 @@
       <a href="#">Shop Now →</a>
     </div>
     <div class="promo-small">
-      <img src="background 2.jfif" alt="Hardware Tools" />
+      <img src="background 3.jfif" alt="Hardware Tools" />
       <h3>Hardware Tools</h3>
       <p>45% Off</p>
       <a href="#">Shop Now →</a>
@@ -553,7 +489,7 @@
       </div>
     </div>
     <div class="product-card">
-      <img src="product16.jfif" alt="Product 16">
+      <img src="/product16.jfif" alt="Product 16">
       <h3>Barrel Spigots</h3>
       <p>Loan: Low Deposit | Daily/Monthly Payments</p>
       <p class="price">KSh 1700</p>
@@ -923,7 +859,7 @@
       <h3>Contact Info</h3>
       <p><i class="bx bx-map"></i> Kikuyu Town, Opposite Kikuyu Police Station<br>Nairobi-Nakuru Highway, Kenya</p>
       <p><i class="bx bx-phone"></i> +0789726463</p>
-      <p><i class="bx bx-envelope"></i> jaredmomanyi344@gmail.com<br>sales@kpfc.co.ke</p>
+      <p><i class="bx bx-envelope"></i> info@kpfc.co.ke<br>jaredmomanyi344@gmail.com</p>
 
       <p><i class="bx bx-time"></i> <strong>Opening Hours</strong><br>
         Mon–Thu: 8:00 AM – 6:00 PM<br>
