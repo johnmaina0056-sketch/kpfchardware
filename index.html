@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>KPFC Builders Hardware</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />   
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+
+/* NAVBAR AND TOPBAR */
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 18px 60px; background: #fff; border-bottom: 1px solid #eee; }
+.logo-main { font-size: 30px; font-weight: 700; color: #e53935; }
+.logo-sub { font-size: 14px; color: #1e88e5; border-bottom: 3px solid #fbc02d; }
+.nav-links a { margin: 0 16px; text-decoration: none; color: #444; font-weight: 500; }
+.nav-icons { display: flex; align-items: center; gap: 18px; font-size: 20px; }
+.cart { position: relative; }
+.cart span { position: absolute; top: -6px; right: -10px; background: orange; color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 50%; }
+
+/* HERO */
+.hero { height: 88vh; background: url("images/saved.jpg") center/cover no-repeat; position: relative; }
+.hero::after { content: ""; position: absolute; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0,0,0,0.65), rgba(0,0,0,0.15)); }
+.hero-content { position: absolute; top: 50%; left: 8%; transform: translateY(-50%); color: white; z-index: 2; }
+.hero-content h1 { font-size: 60px; margin-bottom: 10px; }
+.hero-content p { font-size: 20px; margin: 6px 0; }
+
+/* BUTTONS */
+.buttons { margin-top: 25px; }
+.btn { padding: 13px 28px; border-radius: 6px; text-decoration: none; font-size: 14px; margin-right: 12px; display: inline-flex; align-items: center; gap: 6px; transition: 0.3s; }
+.btn-primary { background: #1e88e5; color: #fff; }
+.btn-secondary { border: 1px solid #fff; color: #fff; }
+.btn:hover { opacity: 0.9; transform: scale(1.02); }
+
+/* FEATURES */
+.features { display: flex; justify-content: space-between; padding: 50px 80px; background: #f5f5f5; text-align: center; flex-wrap: wrap; }
+.feature { flex: 1 1 200px; margin: 10px 0; }
+.feature i { font-size: 40px; color: #1976d2; margin-bottom: 10px; }
+.feature h4 { font-size: 16px; }
+.feature p { font-size: 13px; color: #666; }
+
+/* PROMOS */
+.promos { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; padding: 50px 80px; }
+.promo-large { position: relative; border-radius: 10px; overflow: hidden; background: url("images/background 4.jfif") center/cover no-repeat; }
+.promo-large::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.4); }
+.promo-large .content { position: absolute; top: 25%; left: 30px; color: white; z-index: 2; }
+.promo-large h2 { font-size: 30px; }
+.promo-small { background: #f7f7f7; border-radius: 10px; overflow: hidden; text-align: center; padding-bottom: 20px; }
+.promo-small img { width: 100%; height: 160px; object-fit: cover; }
+.promo-small h3 { margin-top: 15px; }
+.promo-small a { color: #1976d2; text-decoration: none; }
+
+/* FEATURED PRODUCTS */
+.featured-products { padding: 50px 80px; background: #fafafa; }
+.featured-products h2 { font-size: 32px; margin-bottom: 30px; text-align: center; }
+.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+.product-card { background: #fff; border-radius: 10px; overflow: hidden; text-align: center; padding-bottom: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: 0.3s; }
+.product-card img { width: 100%; height: 180px; object-fit: cover; }
+.product-card h3 { margin: 10px 0; font-size: 16px; }
+.product-card p { font-size: 14px; color: #666; margin-bottom: 10px; }
+.product-card .price { font-weight: 600; color: #e53935; margin-bottom: 10px; }
+.product-card .actions { display: flex; justify-content: center; gap: 10px; }
+.product-card .actions a { padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 13px; }
+.buy { background: #1e88e5; color: #fff; }
+.add-cart { background: #ff9800; color: #fff; }
+.product-card:hover { transform: translateY(-5px); }
+
+/* FLOATING BUTTONS */
+.floating { position: fixed; right: 20px; bottom: 25px; display: flex; flex-direction: column; gap: 12px; }
+.circle { width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+.call { background: #e53935; }
+.whatsapp { background: #25d366; }
+.footer {
+  background: #2f3b46;
+  color: #ddd;
+  padding: 60px 40px 20px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+}
+
+.footer-col h3 {
+  color: #fff;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.footer-col h3::after {
+  content: "";
+  width: 40px;
+  height: 3px;
+  background: #1e88e5;
+  display: block;
+  margin-top: 6px;
+}
+
+.footer-col p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #bbb;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  margin: 10px 0;
+}
+
+.footer-col ul li a {
+  text-decoration: none;
+  color: #ccc;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.footer-col ul li a:hover {
+  color: #1e88e5;
+  padding-left: 5px;
+}
+
+.socials {
+  margin-top: 15px;
+}
+
+.socials i {
+  font-size: 18px;
+  margin-right: 10px;
+  background: #444;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.socials i:hover {
+  background: #1e88e5;
+}
+
+/* NEWSLETTER */
+.newsletter {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.newsletter h3 {
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.newsletter p {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #bbb;
+}
+
+.newsletter form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.newsletter input {
+  padding: 12px;
+  width: 250px;
+  border: none;
+  border-radius: 5px;
+}
+
+.newsletter button {
+  padding: 12px 20px;
+  border: none;
+  background: #1e88e5;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.newsletter button:hover {
+  background: #1565c0;
+}
+
+/* FOOTER BOTTOM */
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  border-top: 1px solid #444;
+  padding-top: 15px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px) {
+  .footer {
+    padding: 40px 20px;
+  }
+}
+/* RESPONSIVE */
+@media (max-width: 1200px) { .navbar, .topbar { padding: 15px 40px; } .features { padding: 40px 40px; } .promos { padding: 40px 40px; grid-template-columns: 1fr 1fr; } .hero-content h1 { font-size: 50px; } .hero-content p { font-size: 18px; } }
+@media (max-width: 768px) { .topbar { flex-direction: column; text-align: center; padding: 10px 20px; } .navbar { flex-direction: column; gap: 10px; padding: 10px 20px; } .nav-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; } .features { flex-direction: column; padding: 30px 20px; } .hero-content h1 { font-size: 38px; } .hero-content p { font-size: 16px; } .promos { grid-template-columns: 1fr; padding: 30px 20px; } }
+@media (max-width: 480px) { .hero-content h1 { font-size: 28px; } .hero-content p { font-size: 14px; } .btn { padding: 10px 18px; font-size: 12px; } }
+/* CART MODAL */
+.cart-modal {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 350px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -4px 0 12px rgba(0,0,0,0.2);
+  transition: 0.4s;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.cart-modal.active {
+  right: 0;
+}
+
+.cart-content h2 {
+  margin-bottom: 15px;
+}
+
+.cart-item {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+
+.cart-item h4 {
+  font-size: 14px;
+}
+
+.cart-item p {
+  font-size: 13px;
+  color: #666;
+}
+
+#checkout-btn {
+  width: 100%;
+  padding: 12px;
+  background: #25d366;
+  color: white;
+  border: none;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+#close-cart {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div><i class="bx bx-envelope"></i> jaredmomanyi344@gmail.com&nbsp;&nbsp; <i class="bx bx-phone"></i> 0789726463</div>
+    <div>Welcome to Our Store &nbsp;&nbsp; English &nbsp;&nbsp; KSh (KES)</div>
+  </div>
+
+  <div class="navbar">
+    <div class="logo">
+      <div class="logo-main">KPFC</div>
+      <div class="logo-sub">Builders Hardware</div>
+    </div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Shop</a>
+      <a href="#">Pages</a>
+      <a href="#">Blog</a>
+      <a href="#">Elements</a>
+      <a href="#">Buy</a>
+    </div>
+    <div class="nav-icons">
+      <i class="bx bx-user"></i>
+      <i class="bx bx-search"></i>
+      <i class="bx bx-heart"></i>
+      <div class="cart"><i class="bx bx-cart"></i><span>0</span></div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-content">
+      <h1>Season Sale</h1>
+      <p>Hardware & Plumbing</p>
+      <p>Min. 35–70% Off</p>
+      <div class="buttons">
+        <a href="#" class="btn btn-primary"><i class="bx bx-cart"></i> SHOP NOW</a>
+        <a href="#" class="btn btn-secondary"><i class="bx bx-book"></i> READ MORE</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="features">
+    <div class="feature"><i class="bx bx-truck"></i><h4>Free Shipping</h4><p>On All Orders Over KSh 50,000</p></div>
+    <div class="feature"><i class="bx bx-shield"></i><h4>Secure Payment</h4><p>We Ensure Secure Transactions</p></div>
+    <div class="feature"><i class="bx bx-refresh"></i><h4>100% Money Back</h4><p>30 Days Return Policy</p></div>
+    <div class="feature"><i class="bx bx-headphone"></i><h4>Online Support</h4><p>24/7 Dedicated Support</p></div>
+  </div>
+
+  <!-- PROMOS -->
+  <div class="promos">
+    <div class="promo-large">
+      <div class="content">
+        <h2>New Arrivals</h2>
+        <p>Building Materials Up to 70% Off</p><br />
+        <a href="#" class="btn btn-primary">Shop Now</a>
+      </div>
+    </div>
+    <div class="promo-small">
+      <img src="images/background 3.jfif" alt="Pipes & Fittings" />
+      <h3>Pipes & Fittings</h3>
+      <p>25% Off</p>
+      <a href="#">Shop Now →</a>
+    </div>
+    <div class="promo-small">
+      <img src="images/background 3.jfif" alt="Hardware Tools" />
+      <h3>Hardware Tools</h3>
+      <p>45% Off</p>
+      <a href="#">Shop Now →</a>
+    </div>
+  </div>
+<!-- FEATURED PRODUCTS -->
+<div class="featured-products">
+  <h2>Featured Products</h2>
+  <div class="products-grid">
+    <!-- Products 1–10 -->
+    <div class="product-card">
+      <img src="images/product 1.jfif" alt="Product 1">
+      <h3>Ceramic Toilet Seats</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 6500</p>
+      <div class="actions">
+        <a href="#" class="buy" data-name="Ceramic Toilet Seats" data-price="KSh 6500">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product2.jfif" alt="Product 2">
+      <h3>Trunking PipesTrunking Pipes</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 850</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product3.jfif" alt="Product 3">
+      <h3>Bathroom Drainage Sieve</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 250</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product4.jfif" alt="Product 4">
+      <h3>iron pipe unions</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 150</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product5.jfif" alt="Product 5">
+      <h3>PVC pipes</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 5680</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product6.jfif" alt="Product 6">
+      <h3>Squat Pans</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 2000</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product7.jfif" alt="Product 7">
+      <h3>Welded Wire mesh</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments </p>
+      <p class="price">KSh 36000 per roll</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product8.jfif" alt="Product 8">
+      <h3>Mamba tank 2500L</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 20000</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product9.jfif" alt="Product 9">
+      <h3>UPVC Pipe TEE</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 530</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product10.jfif" alt="Product 10">
+      <h3>PVC Ball Valves</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 250 - 4500</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+
+    <!-- Products 11–42 -->
+    <div class="product-card">
+      <img src="images/product11.jfif" alt="Product 11">
+      <h3>Faucet Taps</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 2700</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product12.jfif" alt="Product 12">
+      <h3>INGCO PRODUCTS</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">from KSh 700</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product13.jfif" alt="Product 13">
+      <h3>Mono Sinks</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 700</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product14.jfif" alt="Product 14">
+      <h3>ChainLink</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 2700 per roll</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product15.jfif" alt="Product 15">
+      <h3>Barbed Wire</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 3700</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product16.jfif" alt="Product 16">
+      <h3>Barrel Spigots</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 1700</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product17.jfif" alt="Product 17">
+      <h3>PPR Pipe 20mm</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 500</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product18.jfif" alt="Product 18">
+      <h3>Centrifugal Electric Pump</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 23,700</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product19.jfif" alt="Product 19">
+      <h3>Galvanized Pipe 1/2"</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 500</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product20.jfif" alt="Product 20">
+      <h3>PVC Pipe 2"</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 600</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+
+    <!-- Products 21–42 -->
+    <div class="product-card">
+      <img src="images/product21.jfif" alt="Product 21">
+      <h3>Galvanized Pipe 1"</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 800</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product22.jfif" alt="Product 22">
+      <h3>HDPE Fitting Elbow 50mm</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 400</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product23.jfif" alt="Product 23">
+      <h3>Laminated Door Standard</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 4,000</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product24.jfif" alt="Product 24">
+      <h3>Dumuzas Iron Sheet G30 Red</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 1,000</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product25.jfif" alt="Product 25">
+      <h3>Dumuzas Iron Sheet G30 Green</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 1,000</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product26.jfif" alt="Product 26">
+      <h3>Cement 50kg Bag</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 650</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product27.jfif" alt="Product 27">
+      <h3>Sand 1 Ton</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 2,000</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product28.jfif" alt="Product 28">
+      <h3>Ballast 1 Ton</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 2,500</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product29.jfif" alt="Product 29">
+      <h3>Shower Head Chrome</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 1,200</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product30.jfif" alt="Product 30">
+      <h3>Screwdriver Set 10pcs</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 800</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product31.jfif" alt="Product 31">
+      <h3>Cordless Drill 18V</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 12,000</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product32.jfif" alt="Product 32">
+      <h3>deformed Bars</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 560 - 605 per piece</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product33.jfif" alt="Product 33">
+      <h3>Pollux Polish</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 2700</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product34.jfif" alt="Product 34">
+      <h3>Angle Grinder 850W</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 6,500</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product35.jfif" alt="Product 35">
+      <h3>Water Tank 1000L</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 8,000</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product36.jfif" alt="Product 36">
+      <h3>Spirit Level 600mm</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 600</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product37.jfif" alt="Product 37">
+      <h3>Water Heater 50L</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 10,000</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product38.jfif" alt="Product 38">
+      <h3>Block Board 8x4ft</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 2,800</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product39.jfif" alt="Product 39">
+      <h3>Wire Mesh 8x4ft</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 1,500</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product40.jfif" alt="Product 40">
+      <h3>Roofing Nails 1kg</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 200</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product41.jfif" alt="Product 41">
+      <h3>Deformed Bar 10mm</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 900</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/product42.jfif" alt="Product 42">
+      <h3>Deformed Bar 12mm</h3>
+      <p>Loan: Low Deposit | Daily/Monthly Payments</p>
+      <p class="price">KSh 1,200</p>
+      <div class="actions">
+        <a href="#" class="buy">Buy</a>
+        <a href="#" class="add-cart">Add to Cart</a>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  const phoneNumber = "254789726463";
+
+  document.querySelectorAll(".buy").forEach(button => {
+    button.addEventListener("click", function(e) {
+      e.preventDefault();
+
+      const card = this.closest(".product-card");
+
+      const name = card.querySelector("h3").innerText;
+      const price = card.querySelector(".price").innerText;
+
+      const message = `Hello KPFC, I want to order:\n\nProduct: ${name}\nPrice: ${price}`;
+      const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+      window.open(url, "_blank");
+    });
+  });
+  <!-- CART MODAL -->
+<div class="cart-modal" id="cart-modal">
+  <div class="cart-content">
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <h3 id="cart-total">Total: KSh 0</h3>
+
+    <button id="checkout-btn">Checkout via WhatsApp</button>
+    <button id="close-cart">Close</button>
+  </div>
+</div>
+</script>
+<!-- FLOATING CONTACT BUTTONS -->
+<div class="floating">
+  <!-- CALL -->
+  <a href="tel:+254789726463" class="circle call">
+    <i class="bx bx-phone"></i>
+  </a>
+
+  <!-- WHATSAPP -->
+  <a href="https://wa.me/254789726463" target="_blank" class="circle whatsapp">
+    <i class="bx bxl-whatsapp"></i>
+  </a>
+</div>
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- ABOUT -->
+    <div class="footer-col">
+      <h3>KPFC Builders Hardware</h3>
+      <p>
+        Kikuyu Pipes & Fittings Company is your trusted partner for high-quality building materials,
+        pipes, fittings, plumbing supplies, and hardware tools in Kikuyu and across Kenya.
+        We offer wholesale and retail services with competitive prices and reliable delivery.
+      </p>
+
+      <div class="socials">
+        <i class="bx bxl-facebook"></i>
+        <i class="bx bxl-instagram"></i>
+        <i class="bx bxl-twitter"></i>
+        <i class="bx bxl-youtube"></i>
+      </div>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="footer-col">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Delivery Information</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+      </ul>
+    </div>
+
+    <!-- CATEGORIES -->
+    <div class="footer-col">
+      <h3>Product Categories</h3>
+      <ul>
+        <li><a href="#">Pipes & Fittings</a></li>
+        <li><a href="#">Building Materials</a></li>
+        <li><a href="#">Plumbing Supplies</a></li>
+        <li><a href="#">Hardware Tools</a></li>
+        <li><a href="#">Power Tools</a></li>
+        <li><a href="#">Roofing Materials</a></li>
+        <li><a href="#">Cement & Aggregates</a></li>
+        <li><a href="#">Doors & Windows</a></li>
+      </ul>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="footer-col">
+      <h3>Contact Info</h3>
+      <p><i class="bx bx-map"></i> Kikuyu Town, Opposite Kikuyu Police Station<br>Nairobi-Nakuru Highway, Kenya</p>
+      <p><i class="bx bx-phone"></i> +0788567791</p>
+      <p><i class="bx bx-envelope"></i> info@kpfc.co.ke<br>sales@kpfc.co.ke</p>
+
+      <p><i class="bx bx-time"></i> <strong>Opening Hours</strong><br>
+        Mon–Thu: 8:00 AM – 6:00 PM<br>
+        Friday: 8:00 AM – 7:00 PM<br>
+        Saturday: 8:00 AM – 7:00 PM<br>
+        Sunday: 9:00 AM – 4:00 PM
+      </p>
+    </div>
+
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter">
+    <h3>Newsletter</h3>
+    <p>Subscribe to get updates on new arrivals, special offers, and promotions.</p>
+
+    <form>
+      <input type="email" placeholder="Enter your email" required />
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+
+  <!-- COPYRIGHT -->
+  <div class="footer-bottom">
+    <p>© 2026 KPFC Builders Hardware. All Rights Reserved.</p>
+  </div>
+</footer>
